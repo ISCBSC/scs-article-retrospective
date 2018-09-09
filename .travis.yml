@@ -3,11 +3,11 @@ services: docker
 script:
 - docker pull rekka/tectonic
 - docker run --mount src=$PWD,target=/usr/src/tex,type=bind rekka/tectonic tectonic
-  SCS-2017.tex
+  scs_2017.tex
 deploy:
   provider: releases
   file:
-  - "./SCS-2017.pdf"
+  - "./scs_2017.pdf"
   skip_cleanup: true
   on:
     tags: true
