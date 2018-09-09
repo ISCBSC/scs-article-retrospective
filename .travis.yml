@@ -1,0 +1,16 @@
+sudo: require
+services: docker
+script:
+- docker pull rekka/tectonic
+- docker run --mount src=$PWD,target=/usr/src/tex,type=bind rekka/tectonic tectonic
+  SCS-2017.tex
+deploy:
+  provider: releases
+  file:
+  - "./SCS-2017.pdf"
+  skip_cleanup: true
+  on:
+    tags: true
+    branch: master
+  api-key:
+    secure: X+DvCX0ykrk8B3gQothj1c5ZaMvdtaqAc51s66uhqwoDLbKD3ae1OfiL0jH0yQdgyr/QNnXfKP4GteBk+SJ/0skhsT0r1yJN8x5Ypy81a/b+ZU4IkV7E/WpwGIjYzxLjhXQNrNIB+Imh+XxcDp8UF9F8VZ62aWMMl5mikZ19fA4A0deK8BeM/HpgyflYK48JraI44jbeZkZSAR+1BYZ1kIeF8h//6EQNzdyOeRmfNLzFwBTKkrVSet9GesxJWufWU13E2Do1vhisho6e10ZdfIDAkJJFgof5hh/isO/lAISsW1fe2g/hzSrfbJEGzZ/MsSR2GcOqfIiauwNmfwqvZM+xKt3Nq7ofNqG0IodPwo7YtwE0Zsc1oDpEwRPmBInIOfM3lt16XPQ7ifSMy3obitmLl9R6syMcffXqw9cpMmW7wULBVL25SBkdPHHU86CO6rAxQY5+hg6UAUCorrGCMCJOWelW6Ht4Tq6VuUiALvcVBGVbx6+puPlgUqXyfn616wTlQ+UkV2NNsbvmCnOwbvPdihYp11VVQ8w+xFkb8q9tBmwtaz+kXTs6l+xQqJwhfl/3SGOaxGoAzkE47sfD5FUcB8awqY1jLmrndByi3NK+bsbC1oTCWXfPEZe8MwHnyecPWUSzL34A6iBnAExlUO7bfIpBZtng96AHjE22Ccs=
